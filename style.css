@@ -9,8 +9,21 @@ body{
     height: 100%;
 }
 
+#miniCircle{
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 999999;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+    mix-blend-mode: difference;
+
+}
+
 main{
     width: 100%;
+    background-color: black;
 }
 
 #hero{
