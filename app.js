@@ -15,11 +15,41 @@ const scroll = new LocomotiveScroll({
     smooth: true
 });
 
+var timer
 
 
-function circleMouseFollow(){
+function mouseChapta(){
+    clearTimeout(timer)
+    // define default scale value
+    var xScale=1
+    var yScale=1
+    
+    var xPrev = 0
+    var yPrev = 0
+
     window.addEventListener("mousemove", function(dets){
-        document.querySelector("#miniCircle").style.transform = `translate(${dets.clientX}px, ${dets.clientY}px)`
+        var xdiff= dets.clientX - xPrev ;
+        var ydiff= dets.clientY - xPrev ;
+        xPrev = dets.clientX
+        yPrev = dets.clientY
+        
+        xScale= gsap.utils.clamp(0.8, 1, xdiff);
+        yScale= gsap.utils.clamp(0.8, 1, ydiff);
+
+        circleMouseFollow(xScale, yScale)
+
+        timer = setTimeout(function(){
+            document.querySelector("#miniCircle").style.transform = `translate(${dets.clientX}px, ${dets.clientY}px) scale(1, 1)`
+        }, 100)
+
+    })
+}
+
+mouseChapta()
+
+function circleMouseFollow(xScale, yScale){
+    window.addEventListener("mousemove", function(dets){
+        document.querySelector("#miniCircle").style.transform = `translate(${dets.clientX}px, ${dets.clientY}px) scale(${xScale}, ${yScale})`
     })
 }
 
@@ -40,8 +70,18 @@ function firstAnim(){
         .to(".boundingElem",{
             y: 0,
             ease: Expo.easeInOut,
-            duration: 1,
-            stagger: 0.2
+            duration: 1.5,
+            stagger: 0.2,
+            delay: -0.5
+        })
+
+        .from("#heroFooterHeading", {
+            y:-10,
+            opacity:0,
+            duration:1.5,
+            ease:Expo.easeInOut,
+            delay: -1
+
         })
 }
 
