@@ -10,8 +10,8 @@ body{
 }
 
 #miniCircle{
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     background-color: #fff;
     border-radius: 50%;
     position: fixed;
@@ -151,7 +151,7 @@ main{
 }
 
 .elem img{
-    display: none;
+    /* display: none; */
     z-index: 999;
     position: absolute;
     height: 130%;
