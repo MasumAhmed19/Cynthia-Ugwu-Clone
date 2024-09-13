@@ -18,12 +18,24 @@ body{
     z-index: 999999;
     transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
     mix-blend-mode: difference;
-
 }
+
+
 
 main{
     width: 100%;
     background-color: black;
+}
+
+
+.bounding{
+    width: fit-content;
+    overflow: hidden;
+}
+
+.bounding .boundingElem{
+
+    transform: translateY(100%);
 }
 
 #hero{
